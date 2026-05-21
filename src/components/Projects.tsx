@@ -171,8 +171,8 @@ const WebPortalCarousel = () => {
 const ADMIN_IMAGES = [
   { src: '/ADMIN1.png', title: 'Estadisticas de Actividad' },
   { src: '/ADMIN2.png', title: 'Gestión de Usuarios y Roles' },
-  { src: '/ADMIN3.png', title: 'Moderación de Eventos' },
-  { src: '/ADMIN4.png', title: 'Moderación de Noticias' },
+  { src: '/ADMIN3.png', title: 'Moderación de Eventos y Noticias' },
+  { src: '/ADMIN4.png', title: 'Asistente Virtual' },
   { src: '/ADMIN5.png', title: 'Login' }
 ];
 
