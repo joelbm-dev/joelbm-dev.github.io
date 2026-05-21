@@ -128,7 +128,6 @@ const ROLES = [
   'Desarrollador Web Full Stack',
   'Técnico de Sistemas y Redes',
   'Especialista en RPA',
-  'Desarrollador Backend Java/Spring',
 ];
 
 /* ─────────────────────────────────────────────

@@ -15,18 +15,18 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'BlueCrew ODS 14 Portal',
-    subtitle: 'Event platform focused on ODS 14: Life Below Water',
+    title: 'BlueCrew Web Portal',
+    subtitle: 'Plataforma de Concienciación y Gestión de Eventos Marinos (ODS 14)',
     description: 'Aplicación web interactiva dedicada a la concienciación y gestión de eventos medioambientales para la conservación y protección de la vida submarina (ODS 14). Permite a los usuarios registrarse en jornadas de limpieza de playas y fondos marinos, y monitorizar el impacto ecológico acumulado en tiempo real.',
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'REST APIs', 'MySQL'],
+    tech: ['React', 'Bootstrap', 'Spring Boot', 'MySQL', 'Docker'],
     github: 'https://github.com/joelbm-dev/bluecrew-portal',
     demo: '#',
   },
   {
     title: 'BlueCrew Admin Panel',
-    subtitle: 'Moderation & User Management Dashboard',
+    subtitle: 'Sistema de Administración para la Plataforma BlueCrew',
     description: 'Panel de control administrativo e integral para la plataforma BlueCrew. Cuenta con herramientas completas para la gestión y moderación de usuarios, aprobación y auditoría de eventos de conservación marina, y un módulo analítico de estadísticas de participación comunitaria.',
-    tech: ['Angular', 'TypeScript', 'Java', 'Spring Boot', 'MySQL', 'Docker'],
+    tech: ['Angular', 'Bootstrap', 'Spring Boot', 'MySQL', 'Docker'],
     github: 'https://github.com/joelbm-dev/bluecrew-admin',
     demo: '#',
   }
@@ -36,11 +36,11 @@ const projects: Project[] = [
    IMAGE CAROUSEL FOR BLUECREW ODS 14 WEB PORTAL (WEB1 to WEB5)
 ───────────────────────────────────────────────────────────────────────────── */
 const WEB_IMAGES = [
-  { src: '/WEB1.png', title: 'Portal ODS 14 — Página Principal' },
-  { src: '/WEB2.png', title: 'Catálogo de Eventos Medioambientales' },
-  { src: '/WEB3.png', title: 'Registro de Voluntarios' },
-  { src: '/WEB4.png', title: 'Mapa de Impacto Ecológico' },
-  { src: '/WEB5.png', title: 'Estadísticas de Conservación Marina' },
+  { src: '/WEB1.png', title: 'Página Principal' },
+  { src: '/WEB2.png', title: 'Catálogo de Noticias' },
+  { src: '/WEB3.png', title: 'Catálogo de Eventos' },
+  { src: '/WEB4.png', title: 'Sobre Nosotros' },
+  { src: '/WEB5.png', title: 'Login' },
 ];
 
 const WebPortalCarousel = () => {
@@ -169,11 +169,11 @@ const WebPortalCarousel = () => {
    (Visualizes real administration panels ADMIN1 to ADMIN5)
 ───────────────────────────────────────────────────────────────────────────── */
 const ADMIN_IMAGES = [
-  { src: '/ADMIN1.png', title: 'Panel de Control - Vista General' },
+  { src: '/ADMIN1.png', title: 'Estadisticas de Actividad' },
   { src: '/ADMIN2.png', title: 'Gestión de Usuarios y Roles' },
-  { src: '/ADMIN3.png', title: 'Moderación de Eventos Marinos' },
-  { src: '/ADMIN4.png', title: 'Reportes de Actividad y ODS 14' },
-  { src: '/ADMIN5.png', title: 'Métricas de Participación' }
+  { src: '/ADMIN3.png', title: 'Moderación de Eventos' },
+  { src: '/ADMIN4.png', title: 'Moderación de Noticias' },
+  { src: '/ADMIN5.png', title: 'Login' }
 ];
 
 const AdminPanelCarousel = () => {

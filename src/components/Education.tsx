@@ -102,7 +102,7 @@ const Education = () => {
                   </div>
 
                   {/* Calendar Badge */}
-                  <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-accent-600 dark:text-accent-400 bg-accent-500/10 border border-accent-500/20 px-3 py-1.5 rounded-full w-fit">
+                  <span className="flex items-center gap-1.5 text-xs font-mono font-bold text-accent-600 dark:text-accent-400 bg-accent-500/10 border border-accent-500/20 px-3 py-1.5 rounded-full w-fit whitespace-nowrap shrink-0 md:mt-1">
                     <Calendar size={13} />
                     {item.date}
                   </span>

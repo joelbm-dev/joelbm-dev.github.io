@@ -45,7 +45,7 @@ const Footer = () => {
           <p className="flex items-center gap-1 mb-2">
             Desarrollado con <Heart size={14} className="text-accent-500" /> y React
           </p>
-          <p>&copy; {new Date().getFullYear()} Joel Barreira. Todos los derechos reservados.</p>
+          <p>&copy; {new Date().getFullYear()} joelbm-dev. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>
