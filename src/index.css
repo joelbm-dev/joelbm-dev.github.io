@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent-500: #2563eb;
+  --color-accent-600: #1d4ed8;
+  --color-accent-400: #60a5fa;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+  }
+  
+  .dark {
+    --bg-color: #0a0e1a;
+    --text-color: #f3f4f6;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* ── Shimmer gradient text ── */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #1e40af 0%,
+    #3b82f6 25%,
+    #1d4ed8 50%,
+    #60a5fa 75%,
+    #1e40af 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+
+/* ── Typewriter cursor blink ── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  background: #60a5fa;
+  border-radius: 2px;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+/* ── Dot-grid background ── */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(96,165,250,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
