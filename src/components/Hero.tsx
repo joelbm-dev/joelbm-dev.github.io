@@ -83,7 +83,7 @@ function FloatingBadge({ icon, color, label, style, floatY, duration, delay = 0,
       whileHover={{ scale: 1.18 }}
     >
       <div
-        className="p-3 rounded-2xl shadow-xl border border-white/20 dark:border-white/10 backdrop-blur-sm"
+        className="p-3 rounded-full shadow-xl border border-white/20 dark:border-white/10 backdrop-blur-sm"
         style={{ background: `${color}18`, boxShadow: `0 0 18px ${color}40` }}
       >
         <span style={{ color, fontSize: 28, display: 'block', lineHeight: 1 }}>{icon}</span>
@@ -332,7 +332,7 @@ const Hero = () => {
 
               {/* ── Profile image ── */}
               <motion.div
-                className="absolute inset-[8%] rounded-[2rem] overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl z-10"
+                className="absolute inset-[8%] rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl z-10"
                 whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.4 }}
               >
@@ -349,8 +349,8 @@ const Hero = () => {
 
               {/* GitHub — top-left */}
               <FloatingBadge
-                icon={<FaGithub />}
-                color="#1f2937"
+                icon={<FaGithub className="text-gray-800 dark:text-white" />}
+                color="currentColor"
                 label="GitHub"
                 href="https://github.com/joelbm-dev"
                 style={{ top: '2%', left: '-8%' }}
