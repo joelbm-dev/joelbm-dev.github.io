@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# 🚀 Portafolio Profesional — Joel Barreira
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+¡Hola! Bienvenido al repositorio de mi portafolio web personal. Aquí comparto mis proyectos más destacados, mi trayectoria y las tecnologías que domino como **Full Stack Web Developer**.
 
-Currently, two official plugins are available:
+El objetivo de este sitio es mostrar mi capacidad para crear soluciones web modernas, limpias, eficientes y completamente adaptadas a las necesidades reales del usuario y del mercado.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🛠️ Stack Tecnológico
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Este portafolio ha sido construido utilizando herramientas modernas de desarrollo para garantizar una velocidad de carga óptima, un código tipado seguro y un diseño responsivo impecable:
 
-## Expanding the ESLint configuration
+*   **Frontend:** React, TypeScript, Tailwind CSS
+*   **Herramienta de Construcción:** Vite (Fast HMR)
+*   **Despliegue y Hosting:** Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Proyectos Destacados
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Dentro de mi portafolio puedes encontrar el desglose y código de mis aplicaciones principales:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🌊 1. BlueCrew — Plataforma de Concienciación Marina
+Aplicación interactiva enfocada en la organización de eventos ecológicos y preservación de los océanos, inspirada en los objetivos de desarrollo sostenible (ODS 14).
+*   **Características:** Interfaz dinámica, gestión de eventos y difusión ambiental interactiva.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 💻 2. BlueCrew — Dashboard & Panel de Administración
+Centro de control interno diseñado para la analítica y gestión del ecosistema global de BlueCrew.
+*   **Características:** Roles de usuario, control de métricas de rendimiento y administración de contenido (Backoffice).
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 💻 Instalación y Desarrollo Local
+
+Si deseas clonar este portafolio y ejecutarlo en tu máquina local, sigue estos sencillos pasos:
+
+1. **Clonar el repositorio:**
+```bash
+   git clone [https://github.com/joelbm-dev/tu-repositorio.git](https://github.com/joelbm-dev/tu-repositorio.git)
+   cd tu-repositorio
