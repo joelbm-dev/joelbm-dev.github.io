@@ -357,7 +357,7 @@ const Projects = () => {
                     <div className="flex items-center gap-2 text-accent-500 dark:text-accent-400 bg-accent-500/5 dark:bg-accent-500/10 px-3 py-1.5 rounded-xl border border-accent-500/10">
                       {isFirst ? <Droplets size={16} className="text-cyan-500 animate-pulse" /> : <Cpu size={16} />}
                       <span className="text-[10px] font-black uppercase tracking-widest font-mono">
-                        {isFirst ? 'ODS 14: Vida Submarina' : 'Panel de Administración'}
+                        {isFirst ? 'PORTAL WEB: VIDA SUBMARINA' : 'Panel de Administración'}
                       </span>
                     </div>
                     <div className="flex gap-3">

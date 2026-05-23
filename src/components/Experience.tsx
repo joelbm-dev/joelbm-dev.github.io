@@ -81,7 +81,7 @@ const Experience = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center lg:justify-start gap-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white flex items-center gap-4">
             <span className="text-accent-500 font-mono text-2xl md:text-3xl">04.</span> Experiencia Profesional
             <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1 max-w-md hidden lg:block ml-4 transition-colors duration-300"></div>
           </h2>
