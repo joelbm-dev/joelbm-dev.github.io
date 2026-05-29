@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Calendar, MapPin, ArrowRight, Shield, Award, Zap, Code, Server } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { magicalSynth } from './Header';
 
 interface ExperienceItem {
   role: string;
@@ -63,7 +64,7 @@ const Experience = () => {
   const currentExp = experiences[activeIdx];
 
   return (
-    <section id="experience" className="py-24 relative bg-white dark:bg-[#0a0e1a]/40 transition-colors duration-300 overflow-hidden">
+    <section id="experience" className="py-24 relative bg-kh-bg-primary transition-colors duration-300 overflow-hidden">
       
       {/* Background ambient decorations */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-60">
@@ -75,17 +76,16 @@ const Experience = () => {
         
         {/* Section Header */}
         <motion.div 
-          className="mb-16 text-center lg:text-left"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="mb-16 text-center flex flex-col items-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white flex items-center gap-4">
-            <span className="text-accent-500 font-mono text-2xl md:text-3xl">04.</span> Experiencia Profesional
-            <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1 max-w-md hidden lg:block ml-4 transition-colors duration-300"></div>
+          <h2 className="text-3xl md:text-5xl font-bold text-kh-text flex items-center justify-center gap-4">
+            Experiencia Profesional
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mt-2 font-medium">
+          <p className="text-lg text-kh-muted max-w-3xl mt-2 font-medium mx-auto">
             Mis prácticas y colaboraciones reales en empresas y administración pública, consolidando conocimiento técnico directo sobre el terreno.
           </p>
         </motion.div>
@@ -95,21 +95,29 @@ const Experience = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
+          whileHover={{ 
+            boxShadow: '0 20px 45px -15px rgba(212, 175, 55, 0.12), 0 10px 20px -15px rgba(212, 175, 55, 0.08)',
+            borderColor: 'rgba(212, 175, 55, 0.4)'
+          }}
           transition={{ duration: 0.65 }}
-          className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800/80 rounded-3xl p-6 md:p-8 hover:border-accent-500/30 dark:hover:border-accent-500/30 transition-all duration-300 shadow-xl relative overflow-hidden group"
+          className="bg-kh-bg-card backdrop-blur-md border border-kh-border rounded-3xl p-6 md:p-8 transition-all duration-300 shadow-xl relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-accent-500/[0.01] to-blue-500/[0.01] pointer-events-none" />
 
           {/* Interactive Navigation Tabs */}
-          <div className="flex flex-wrap border-b border-gray-150 dark:border-gray-800/80 mb-8 gap-2">
+          <div className="flex flex-wrap border-b border-kh-border mb-8 gap-2">
             {experiences.map((exp, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveIdx(idx)}
-                className={`flex items-center gap-2 px-5 py-3.5 text-xs font-bold rounded-t-xl transition-all border-b-2 -mb-[2px] ${
+                onClick={() => {
+                  setActiveIdx(idx);
+                  magicalSynth.playChime();
+                }}
+                onMouseEnter={() => magicalSynth.playChime()}
+                className={`flex items-center gap-2 px-5 py-3.5 text-xs font-bold rounded-t-xl transition-all border-b-2 -mb-[2px] cursor-pointer ${
                   activeIdx === idx
                     ? 'border-accent-500 text-accent-600 dark:text-accent-400 bg-accent-500/[0.03]'
-                    : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                    : 'border-transparent text-kh-muted hover:text-kh-text'
                 }`}
               >
                 {exp.icon}
@@ -130,18 +138,18 @@ const Experience = () => {
                 className="space-y-6 text-left"
               >
                 {/* Header Information block (No percentages as requested) */}
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-gray-100 dark:border-gray-800/60">
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-kh-border">
                   <div>
-                    <h3 className="text-2xl font-black text-gray-900 dark:text-white flex items-center gap-2.5">
+                    <h3 className="text-2xl font-black text-kh-text flex items-center gap-2.5">
                       {currentExp.role}
                     </h3>
                     
-                    <div className="flex flex-wrap items-center text-sm font-semibold text-gray-500 dark:text-gray-400 gap-3 mt-1.5">
+                    <div className="flex flex-wrap items-center text-sm font-semibold text-kh-muted gap-3 mt-1.5">
                       <span className="flex items-center gap-1.5">
                         <Award size={15} className="text-accent-500" />
                         {currentExp.company}
                       </span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700 hidden sm:block" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-kh-border hidden sm:block" />
                       <span className="flex items-center gap-1.5">
                         <MapPin size={15} className="text-accent-500" />
                         {currentExp.location}
@@ -155,7 +163,7 @@ const Experience = () => {
                       <Calendar size={13} />
                       {currentExp.date}
                     </span>
-                    <span className="text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider mt-1 flex items-center gap-1">
+                    <span className="text-[10px] text-kh-muted font-bold uppercase tracking-wider mt-1 flex items-center gap-1">
                       <Shield size={10} className="text-emerald-500" /> Periodo de Prácticas
                     </span>
                   </div>
@@ -164,7 +172,7 @@ const Experience = () => {
                 {/* Accomplishment Bullet points */}
                 <ul className="space-y-4 pl-1">
                   {currentExp.points.map((pt, idx) => (
-                    <li key={idx} className="flex items-start gap-3.5 text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                    <li key={idx} className="flex items-start gap-3.5 text-sm md:text-base text-kh-muted leading-relaxed font-medium">
                       <ArrowRight size={15} className="text-accent-500 dark:text-accent-400 mt-1.5 flex-shrink-0" />
                       <span>{pt}</span>
                     </li>
@@ -174,7 +182,7 @@ const Experience = () => {
             </AnimatePresence>
 
             {/* Technical Tags footer */}
-            <div className="flex flex-wrap gap-2.5 mt-8 pt-5 border-t border-gray-150 dark:border-gray-800/80">
+            <div className="flex flex-wrap gap-2.5 mt-8 pt-5 border-t border-kh-border">
               {currentExp.tags.map((t, idx) => (
                 <span 
                   key={idx}

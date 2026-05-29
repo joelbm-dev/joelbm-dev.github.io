@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Download, Mail, ChevronDown } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { magicalSynth } from './Header';
 
 /* ─────────────────────────────────────────────
    Typewriter hook
@@ -35,6 +36,23 @@ function useTypewriter(words: string[], typeSpeed = 75, deleteSpeed = 40, pauseM
 
   return words[wordIndex % words.length].slice(0, charIndex);
 }
+
+/* ─────────────────────────────────────────────
+   High-Fantasy Floating Motes (KH & FF Theme)
+───────────────────────────────────────────── */
+const FANTASY_PARTICLES = Array.from({ length: 22 }, (_, i) => {
+  const glyphs = ['✦', '✨', '⭐', '💛'];
+  return {
+    id: i,
+    x: `${Math.random() * 100}%`,
+    y: `${Math.random() * 100}%`,
+    char: glyphs[Math.floor(Math.random() * glyphs.length)],
+    size: Math.random() * 10 + 6, // 6px to 16px
+    duration: Math.random() * 12 + 6, // slower, floating majestically
+    delay: Math.random() * 5,
+    color: i % 2 === 0 ? 'rgba(212, 175, 55, 0.25)' : 'rgba(251, 191, 36, 0.25)', // Warm Gold and Amber Yellow
+  };
+});
 
 /* ─────────────────────────────────────────────
    Mouse-parallax hook
@@ -110,16 +128,164 @@ const stats = [
 ];
 
 /* ─────────────────────────────────────────────
-   Particle dots (subtle, background)
+   Interactive HTML5 Canvas Network Background
 ───────────────────────────────────────────── */
-const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
-  id: i,
-  x: `${Math.random() * 100}%`,
-  y: `${Math.random() * 100}%`,
-  size: Math.random() * 3 + 1,
-  duration: Math.random() * 6 + 4,
-  delay: Math.random() * 5,
-}));
+function NetworkBackground() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const mouseRef = useRef({ x: -1000, y: -1000 });
+  const isIntersecting = useRef(true);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
+
+    // Limit nodes on mobile for maximum performance
+    const nodeCount = width < 768 ? 22 : 60;
+    const maxDistance = 110;
+    const mouseMaxDistance = 160;
+
+    interface Node {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      radius: number;
+      color: string;
+    }
+
+    const nodes: Node[] = [];
+    const colors = ['#ffd700', '#fbbf24', '#f59e0b', '#d4af37']; // Gold, Amber, Orange-Gold, Soft Gold
+
+    for (let i = 0; i < nodeCount; i++) {
+      nodes.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() * 2 - 1) * 0.35,
+        vy: (Math.random() * 2 - 1) * 0.35,
+        radius: Math.random() * 2 + 1.2,
+        color: colors[Math.floor(Math.random() * colors.length)]
+      });
+    }
+
+    const handleResize = () => {
+      if (!canvas) return;
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Relative to screen client
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+    };
+
+    const handleMouseLeave = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseleave', handleMouseLeave);
+
+    // IntersectionObserver to pause simulation when scrolled out of view
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isIntersecting.current = entry.isIntersecting;
+        if (entry.isIntersecting) {
+          loop();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.02 }
+    );
+    
+    observer.observe(canvas);
+
+    const loop = () => {
+      if (!isIntersecting.current) return;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // 1. Update and draw nodes
+      nodes.forEach(node => {
+        node.x += node.vx;
+        node.y += node.vy;
+
+        // Bounce borders
+        if (node.x < 0 || node.x > width) node.vx *= -1;
+        if (node.y < 0 || node.y > height) node.vy *= -1;
+
+        node.x = Math.max(0, Math.min(width, node.x));
+        node.y = Math.max(0, Math.min(height, node.y));
+
+        // Connect/interact with mouse
+        const dx = mouseRef.current.x - node.x;
+        const dy = mouseRef.current.y - node.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < mouseMaxDistance) {
+          const force = (mouseMaxDistance - dist) / mouseMaxDistance;
+          node.vx -= (dx / dist) * force * 0.02;
+          node.vy -= (dy / dist) * force * 0.02;
+
+          // Connect directly to mouse with neon gold laser thread
+          ctx.strokeStyle = `rgba(212, 175, 55, ${force * 0.28})`;
+          ctx.lineWidth = 0.8;
+          ctx.beginPath();
+          ctx.moveTo(node.x, node.y);
+          ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
+          ctx.stroke();
+        }
+
+        // Draw node
+        ctx.fillStyle = node.color;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // 2. Connect nearby nodes
+      ctx.lineWidth = 0.5;
+      for (let i = 0; i < nodes.length; i++) {
+        const nodeA = nodes[i];
+        for (let j = i + 1; j < nodes.length; j++) {
+          const nodeB = nodes[j];
+          const dist = Math.hypot(nodeA.x - nodeB.x, nodeA.y - nodeB.y);
+
+          if (dist < maxDistance) {
+            const alpha = (maxDistance - dist) / maxDistance;
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha * 0.12})`;
+            ctx.beginPath();
+            ctx.moveTo(nodeA.x, nodeA.y);
+            ctx.lineTo(nodeB.x, nodeB.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(loop);
+    };
+
+    loop();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      observer.disconnect();
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />;
+}
 
 /* ─────────────────────────────────────────────
    Roles for typewriter
@@ -153,37 +319,44 @@ const Hero = () => {
     >
       {/* ── Aurora blobs ── */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* Top-right: electric blue */}
+        {/* Top-right: glowing gold */}
         <motion.div
-          className="absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-20 dark:opacity-30"
-          style={{ top: '-15%', right: '-10%', background: 'radial-gradient(circle, #2563eb, transparent)' }}
+          className="absolute w-[600px] h-[600px] rounded-full blur-[120px] opacity-20 dark:opacity-35"
+          style={{ top: '-15%', right: '-10%', background: 'radial-gradient(circle, #d4af37, transparent)' }}
           animate={{ scale: [1, 1.25, 1], x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
-        {/* Bottom-left: cyan */}
+        {/* Bottom-left: starlight blue */}
         <motion.div
-          className="absolute w-[500px] h-[500px] rounded-full blur-[100px] opacity-15 dark:opacity-25"
-          style={{ bottom: '-10%', left: '-10%', background: 'radial-gradient(circle, #06b6d4, transparent)' }}
+          className="absolute w-[500px] h-[500px] rounded-full blur-[100px] opacity-15 dark:opacity-30"
+          style={{ bottom: '-10%', left: '-10%', background: 'radial-gradient(circle, #38bdf8, transparent)' }}
           animate={{ scale: [1, 1.3, 1], x: [0, -25, 0], y: [0, 20, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
         />
-        {/* Center-top: indigo */}
+        {/* Center-top: royal bronze gold */}
         <motion.div
-          className="absolute w-[400px] h-[400px] rounded-full blur-[90px] opacity-10 dark:opacity-20"
-          style={{ top: '10%', left: '30%', background: 'radial-gradient(circle, #6366f1, transparent)' }}
+          className="absolute w-[400px] h-[400px] rounded-full blur-[90px] opacity-10 dark:opacity-25"
+          style={{ top: '10%', left: '30%', background: 'radial-gradient(circle, #aa8410, transparent)' }}
           animate={{ scale: [1, 1.2, 1], y: [0, 30, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
         />
       </div>
 
-      {/* ── Floating particles ── */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        {PARTICLES.map(p => (
+      {/* ── Floating interactive network graph background ── */}
+      <NetworkBackground />
+
+      {/* ── Floating high-fantasy motes ── */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+        {FANTASY_PARTICLES.map(p => (
           <motion.div
             key={p.id}
-            className="absolute rounded-full bg-accent-400/30 dark:bg-accent-400/20"
-            style={{ left: p.x, top: p.y, width: p.size, height: p.size }}
-            animate={{ y: [0, -30, 0], opacity: [0.2, 0.7, 0.2] }}
+            className="absolute font-sans font-black pointer-events-none"
+            style={{ left: p.x, top: p.y, fontSize: p.size, color: p.color }}
+            animate={{ 
+              y: [0, -60, 0], 
+              opacity: [0.15, 0.75, 0.15],
+              rotate: [0, 360, 0]
+            }}
             transition={{ duration: p.duration, repeat: Infinity, ease: 'easeInOut', delay: p.delay }}
           />
         ))}
@@ -201,13 +374,13 @@ const Hero = () => {
             animate="visible"
           >
             {/* Availability badge */}
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-accent-500/30 bg-accent-500/5 backdrop-blur-sm shadow-sm">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2.5 mb-6 px-4 py-1.5 rounded-full border border-accent-500/30 bg-accent-500/5 backdrop-blur-sm shadow-sm font-cinzel">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-500" />
               </span>
-              <span className="text-sm font-semibold text-accent-600 dark:text-accent-400 tracking-wide">
-                ¡Hola! (prometo que no soy un robot) Soy
+              <span className="text-[10px] font-black text-accent-600 dark:text-accent-400 tracking-widest uppercase flex items-center gap-1">
+                👑 ¡HOLA! (PROMETO QUE NO SOY UN ROBOT) SOY
               </span>
             </motion.div>
 
@@ -241,25 +414,27 @@ const Hero = () => {
             {/* CTA Buttons */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10"
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-10 font-cinzel text-xs tracking-wider"
             >
               <motion.a
                 href="/cv.pdf"
                 target="_blank"
-                className="flex items-center gap-2.5 px-7 py-3.5 bg-accent-500 hover:bg-accent-600 text-white rounded-xl font-semibold transition-colors w-full sm:w-auto justify-center shadow-lg shadow-accent-500/30"
+                onMouseEnter={() => magicalSynth.playChime()}
+                className="flex items-center gap-2.5 px-7 py-3.5 bg-accent-500 hover:bg-accent-600 text-gray-950 font-black rounded-xl transition-all w-full sm:w-auto justify-center shadow-lg shadow-accent-500/30 border border-accent-400/50 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)] uppercase"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Download size={19} />
+                <Download size={18} />
                 Descargar CV
               </motion.a>
               <motion.a
                 href="mailto:joel.barreira@outlook.com"
-                className="flex items-center gap-2.5 px-7 py-3.5 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 hover:border-accent-500 hover:text-accent-600 dark:hover:text-accent-400 text-gray-700 dark:text-gray-300 rounded-xl font-semibold transition-colors w-full sm:w-auto justify-center shadow-md dark:shadow-none"
+                onMouseEnter={() => magicalSynth.playChime()}
+                className="flex items-center gap-2.5 px-7 py-3.5 bg-white dark:bg-gray-950 border border-gray-200 dark:border-gray-900 hover:border-accent-500 hover:text-accent-500 text-gray-700 dark:text-gray-300 rounded-xl font-black transition-all w-full sm:w-auto justify-center hover:shadow-[0_0_15px_rgba(212,175,55,0.25)] uppercase"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <Mail size={19} />
+                <Mail size={18} />
                 Contactar
               </motion.a>
             </motion.div>
@@ -302,12 +477,12 @@ const Hero = () => {
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <defs>
                     <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%"   stopColor="#2563eb" stopOpacity="0.9" />
-                      <stop offset="50%"  stopColor="#06b6d4" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#2563eb" stopOpacity="0.1" />
+                      <stop offset="0%"   stopColor="#d4af37" stopOpacity="0.95" />
+                      <stop offset="50%"  stopColor="#fbbf24" stopOpacity="0.7" />
+                      <stop offset="100%" stopColor="#d4af37" stopOpacity="0.15" />
                     </linearGradient>
                   </defs>
-                  <circle cx="50" cy="50" r="46" fill="none" stroke="url(#ringGrad)" strokeWidth="0.6" strokeDasharray="3 5" strokeLinecap="round" />
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="url(#ringGrad)" strokeWidth="0.8" strokeDasharray="4 6" strokeLinecap="round" />
                 </svg>
               </motion.div>
 
@@ -317,15 +492,15 @@ const Hero = () => {
                 animate={{ rotate: -360 }}
                 transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}
               >
-                <svg viewBox="0 0 100 100" className="w-full h-full opacity-40">
-                  <circle cx="50" cy="50" r="46" fill="none" stroke="#60a5fa" strokeWidth="0.4" strokeDasharray="1 8" strokeLinecap="round" />
+                <svg viewBox="0 0 100 100" className="w-full h-full opacity-60">
+                  <circle cx="50" cy="50" r="46" fill="none" stroke="#f3e5ab" strokeWidth="0.5" strokeDasharray="1 7" strokeLinecap="round" />
                 </svg>
               </motion.div>
 
               {/* ── Aurora glow blob behind photo ── */}
               <motion.div
                 className="absolute inset-0 rounded-full blur-2xl z-0 opacity-50 dark:opacity-60"
-                style={{ background: 'radial-gradient(circle at 40% 40%, #2563eb55, #06b6d433, transparent)' }}
+                style={{ background: 'radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.28), rgba(251, 191, 36, 0.18), transparent)' }}
                 animate={{ scale: [1, 1.15, 1], opacity: [0.4, 0.65, 0.4] }}
                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               />

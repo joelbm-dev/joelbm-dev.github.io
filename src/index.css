@@ -1,32 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-accent-500: #2563eb;
-  --color-accent-600: #1d4ed8;
-  --color-accent-400: #60a5fa;
+  --font-cinzel: "Cinzel", serif;
+  --font-cinzel-dec: "Cinzel Decorative", serif;
+  --font-sans: "Outfit", sans-serif;
+
+  /* Golden Celestial Accent Palette */
+  --color-accent-500: #d4af37;
+  --color-accent-600: #aa8410;
+  --color-accent-400: #f3e5ab;
+  --color-accent-300: #fcfbfa;
+
+  --color-star-blue-400: #60a5fa;
+  --color-star-blue-500: #38bdf8;
+
+  /* Unified Kingdom Hearts Colors */
+  --color-kh-bg-primary: var(--kh-bg-primary);
+  --color-kh-bg-secondary: var(--kh-bg-secondary);
+  --color-kh-bg-card: var(--kh-bg-card);
+  --color-kh-border: var(--kh-border);
+  --color-kh-text: var(--kh-text);
+  --color-kh-muted: var(--kh-muted);
 }
 
 @custom-variant dark (&:is(.dark *));
 
 @layer base {
   :root {
-    --bg-color: #ffffff;
-    --text-color: #1a1a1a;
+    --kh-bg-primary: #fcf9f2;      /* Warm menu parchment cream */
+    --kh-bg-secondary: #f5f0e1;    /* Slightly warmer parchment cream */
+    --kh-bg-card: rgba(255, 254, 250, 0.85); /* Translucent warm milk white */
+    --kh-border: rgba(212, 175, 55, 0.25);    /* Warm soft gold/bronze border */
+    --kh-text: #2d220f;            /* Deep dark sepia-brown */
+    --kh-muted: #7d6a52;           /* Muted warm sepia/gray-brown */
+    
+    --bg-color: var(--kh-bg-primary);
+    --text-color: var(--kh-text);
+    --border-color: var(--kh-border);
   }
   
   .dark {
-    --bg-color: #0a0e1a;
-    --text-color: #f3f4f6;
+    --kh-bg-primary: #040714;      /* Deep Kingdom Ocean Navy Blue */
+    --kh-bg-secondary: #0b0922;    /* Deep violet-indigo */
+    --kh-bg-card: rgba(13, 10, 35, 0.75);    /* Translucent deep violet-navy with blur */
+    --kh-border: rgba(212, 175, 55, 0.15);   /* Subtle gold border */
+    --kh-text: #f1ebd9;            /* Soft celestial parchment white */
+    --kh-muted: #a5a1c0;           /* Muted lavender/gray */
+    
+    --bg-color: var(--kh-bg-primary);
+    --text-color: var(--kh-text);
+    --border-color: var(--kh-border);
   }
   
   body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-sans);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cinzel);
+    letter-spacing: 0.05em;
   }
 }
 
-/* ── Shimmer gradient text ── */
+/* ── Majestic Golden Shimmer gradient text ── */
 @keyframes shimmer {
   0%   { background-position: -200% center; }
   100% { background-position:  200% center; }
@@ -35,17 +75,18 @@
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #1e40af 0%,
-    #3b82f6 25%,
-    #1d4ed8 50%,
-    #60a5fa 75%,
-    #1e40af 100%
+    #aa8410 0%,
+    #d4af37 25%,
+    #f3e5ab 50%,
+    #d4af37 75%,
+    #aa8410 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: shimmer 5s linear infinite;
+  text-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
 }
 
 /* ── Typewriter cursor blink ── */
@@ -55,17 +96,28 @@
 }
 .cursor-blink {
   display: inline-block;
-  width: 3px;
+  width: 2.5px;
   height: 1.1em;
-  background: #60a5fa;
+  background: #d4af37;
   border-radius: 2px;
   margin-left: 4px;
   vertical-align: middle;
   animation: blink 1s step-end infinite;
 }
 
-/* ── Dot-grid background ── */
+/* ── Dot-grid background with celestial blue dots ── */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(96,165,250,0.12) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: radial-gradient(circle, rgba(212, 175, 55, 0.06) 1.2px, transparent 1.2px);
+  background-size: 32px 32px;
+}
+
+/* ── Magical glowing border utility ── */
+.fantasy-border {
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: inset 0 0 12px rgba(212, 175, 55, 0.05), 0 0 8px rgba(212, 175, 55, 0.05);
+  transition: all 0.3s ease;
+}
+.fantasy-border:hover {
+  border-color: rgba(212, 175, 55, 0.5);
+  box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1), 0 0 15px rgba(212, 175, 55, 0.15);
 }

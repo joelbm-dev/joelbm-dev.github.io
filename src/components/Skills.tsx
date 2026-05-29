@@ -1,5 +1,6 @@
 import { Code2, Database, Cloud, Monitor } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { magicalSynth } from './Header';
 import { 
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaAngular, FaWordpress, 
   FaJava, FaPhp, FaAws, FaDocker, FaGitAlt, FaServer, 
@@ -67,6 +68,31 @@ const skillColors: Record<string, string> = {
   'Soporte Técnico':                'text-[#8B5CF6]',
 };
 
+const skillHexColors: Record<string, string> = {
+  'HTML':                           '#E34F26',
+  'CSS':                            '#1572B6',
+  'JavaScript':                     '#F7DF1E',
+  'TypeScript':                     '#3178C6',
+  'Angular':                        '#DD0031',
+  'React':                          '#61DAFB',
+  'WordPress':                      '#21759B',
+  'Java':                           '#f89820',
+  'C#':                             '#9B59B6',
+  'PHP':                            '#777BB4',
+  'Spring Boot':                    '#6DB33F',
+  'MySQL':                          '#4479A1',
+  'UiPath':                         '#FA4616',
+  'Blue Prism':                     '#0080C6',
+  'Camunda':                        '#FC5D0D',
+  'AWS':                            '#FF9900',
+  'Docker':                         '#2496ED',
+  'Git':                            '#F05032',
+  'Administración de Servidores':   '#10B981',
+  'Despliegue de Redes':            '#3B82F6',
+  'Configuración Hardware/Software':'#F59E0B',
+  'Soporte Técnico':                '#8B5CF6',
+};
+
 const skillCategories = [
   {
     title: 'Frontend y CMS',
@@ -107,7 +133,7 @@ const iconVariants: any = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 relative bg-gray-50/40 dark:bg-gray-950/20 transition-colors duration-300">
+    <section id="skills" className="py-24 relative bg-kh-bg-secondary transition-colors duration-300">
 
       {/* Background blurs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -119,18 +145,16 @@ const Skills = () => {
 
         {/* Heading */}
         <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="mb-16 text-center flex flex-col items-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white flex items-center gap-4">
-            <span className="text-accent-500 font-mono text-2xl md:text-3xl">02.</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-kh-text flex items-center justify-center gap-4">
             Habilidades Técnicas
-            <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1 max-w-md hidden lg:block ml-4 transition-colors duration-300" />
           </h2>
-          <p className="text-lg text-gray-500 dark:text-gray-400 mt-4 max-w-2xl">
+          <p className="text-lg text-kh-muted mt-4 max-w-2xl mx-auto">
             Tecnologías con las que trabajo a diario — del frontend al servidor, de la automatización a la infraestructura.
           </p>
         </motion.div>
@@ -147,7 +171,7 @@ const Skills = () => {
             <motion.div
               key={idx}
               variants={cardVariants}
-              className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800/80 rounded-3xl p-8 hover:border-accent-500/40 dark:hover:border-accent-500/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent-500/5 dark:hover:shadow-accent-500/10 relative overflow-hidden group"
+              className="bg-kh-bg-card backdrop-blur-md border border-kh-border rounded-3xl p-8 hover:border-accent-500/40 dark:hover:border-accent-500/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent-500/5 dark:hover:shadow-accent-500/10 relative overflow-hidden group"
             >
               {/* Hover shimmer */}
               <div className="absolute inset-0 bg-gradient-to-br from-accent-500/[0.03] to-blue-500/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -157,7 +181,7 @@ const Skills = () => {
                 <div className="p-2.5 bg-accent-500/10 dark:bg-accent-500/15 rounded-xl text-accent-500 dark:text-accent-400">
                   {category.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white">{category.title}</h3>
+                <h3 className="text-xl font-bold text-kh-text">{category.title}</h3>
               </div>
 
               {/* Icon grid */}
@@ -169,9 +193,15 @@ const Skills = () => {
                   <motion.div
                     key={skillIdx}
                     variants={iconVariants}
-                    whileHover={{ y: -6, scale: 1.08 }}
+                    whileHover={{ 
+                      y: -6, 
+                      scale: 1.08,
+                      boxShadow: `0 10px 25px -5px ${skillHexColors[skill]}35, 0 8px 10px -6px ${skillHexColors[skill]}20`,
+                      borderColor: `${skillHexColors[skill]}50`
+                    }}
+                    onMouseEnter={() => magicalSynth.playChime()}
                     transition={{ type: 'spring', stiffness: 400, damping: 16 }}
-                    className="flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-gray-50 dark:bg-gray-800/60 border border-gray-100 dark:border-gray-700/60 hover:border-accent-500/30 dark:hover:border-accent-500/30 hover:bg-white dark:hover:bg-gray-800 hover:shadow-lg transition-all duration-200 cursor-default group/icon"
+                    className="flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-kh-bg-primary/40 border border-kh-border hover:bg-kh-bg-card hover:shadow-lg transition-all duration-200 cursor-default group/icon"
                   >
                     {/* Icon */}
                     <span
@@ -180,7 +210,7 @@ const Skills = () => {
                       {skillIcons[skill]}
                     </span>
                     {/* Name */}
-                    <span className="text-[11px] font-semibold text-center text-gray-600 dark:text-gray-300 leading-tight">
+                    <span className="text-[11px] font-semibold text-center text-kh-text leading-tight">
                       {skill}
                     </span>
                   </motion.div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ExternalLink, Cpu, Sparkles, Droplets, ChevronLeft, ChevronRight } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { magicalSynth } from './Header';
 
 // Types for Project Specs
 interface Project {
@@ -91,7 +92,7 @@ const WebPortalCarousel = () => {
 
   return (
     <div
-      className="relative h-[220px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-950 group/carousel shadow-inner"
+      className="relative h-[220px] rounded-2xl overflow-hidden border border-kh-border bg-gray-950 group/carousel shadow-inner"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -131,7 +132,7 @@ const WebPortalCarousel = () => {
 
       {/* Caption */}
       <div className="absolute bottom-4 left-4 z-20 flex flex-col gap-0.5 text-left">
-        <span className="text-[10px] text-cyan-400 font-black uppercase tracking-widest font-mono">
+        <span className="text-[10px] text-accent-400 font-black uppercase tracking-widest font-mono">
           CAPTURA {currentIndex + 1} de {WEB_IMAGES.length}
         </span>
         <span className="text-xs font-bold text-white tracking-wide">
@@ -151,7 +152,7 @@ const WebPortalCarousel = () => {
             }}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               idx === currentIndex
-                ? 'w-5 bg-cyan-500 shadow-[0_0_8px_#06b6d4]'
+                ? 'w-5 bg-accent-500 shadow-[0_0_8px_#d4af37]'
                 : 'w-1.5 bg-white/40 hover:bg-white/70'
             }`}
           />
@@ -224,7 +225,7 @@ const AdminPanelCarousel = () => {
 
   return (
     <div 
-      className="relative h-[220px] rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-gray-950 group/carousel shadow-inner"
+      className="relative h-[220px] rounded-2xl overflow-hidden border border-kh-border bg-gray-950 group/carousel shadow-inner"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -284,7 +285,7 @@ const AdminPanelCarousel = () => {
             }}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               idx === currentIndex 
-                ? 'w-5 bg-accent-500 shadow-[0_0_8px_#3b82f6]' 
+                ? 'w-5 bg-accent-500 shadow-[0_0_8px_#d4af37]' 
                 : 'w-1.5 bg-white/40 hover:bg-white/70'
             }`}
           />
@@ -299,7 +300,7 @@ const AdminPanelCarousel = () => {
 ───────────────────────────────────────────────────────────────────────────── */
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 relative bg-gray-50/40 dark:bg-gray-950/20 transition-colors duration-300 overflow-hidden">
+    <section id="projects" className="py-24 relative bg-kh-bg-secondary transition-colors duration-300 overflow-hidden">
       
       {/* Background Ornaments */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-60">
@@ -311,17 +312,16 @@ const Projects = () => {
         
         {/* Title Block */}
         <motion.div 
-          className="mb-20 text-center lg:text-left"
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="mb-20 text-center flex flex-col items-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center lg:justify-start gap-4">
-            <span className="text-accent-500 font-mono text-2xl md:text-3xl">03.</span> Proyectos Principales
-            <div className="h-px bg-gray-200 dark:bg-gray-800 flex-1 max-w-md hidden lg:block ml-4 transition-colors duration-300"></div>
+          <h2 className="text-3xl md:text-5xl font-bold text-kh-text mb-6 flex items-center justify-center gap-4">
+            Proyectos Principales
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mt-2 font-medium">
+          <p className="text-lg text-kh-muted max-w-3xl mt-2 font-medium mx-auto">
             Una exhibición de los proyectos insignia construidos para dar soluciones eficaces al cuidado medioambiental y la administración a gran escala.
           </p>
         </motion.div>
@@ -337,8 +337,15 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ 
+                  y: -5, 
+                  scale: 1.01,
+                  boxShadow: '0 20px 45px -12px rgba(212, 175, 55, 0.15), 0 10px 20px -15px rgba(212, 175, 55, 0.1)',
+                  borderColor: 'rgba(212, 175, 55, 0.45)'
+                }}
+                onMouseEnter={() => magicalSynth.playChime()}
                 transition={{ duration: 0.65, delay: idx * 0.15 }}
-                className="group relative bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border border-gray-200 dark:border-gray-800/80 rounded-3xl p-8 hover:border-accent-500/40 dark:hover:border-accent-500/40 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-accent-500/5 dark:hover:shadow-accent-500/10 flex flex-col justify-between overflow-hidden"
+                className="group relative bg-kh-bg-card backdrop-blur-md border border-kh-border rounded-3xl p-8 transition-all duration-300 shadow-xl flex flex-col justify-between overflow-hidden"
               >
                 {/* Visual Glass Shimmer Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent-500/[0.02] to-blue-500/[0.01] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -366,14 +373,14 @@ const Projects = () => {
                         target="_blank" 
                         rel="noreferrer"
                         whileHover={{ scale: 1.15, y: -2 }}
-                        className="p-2 bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 rounded-xl transition-all shadow-sm"
+                        className="p-2 bg-kh-bg-primary/60 border border-kh-border text-kh-muted hover:text-accent-500 dark:hover:text-accent-400 rounded-xl transition-all shadow-sm"
                       >
                         <FaGithub size={18} />
                       </motion.a>
                       <motion.a 
                         href={project.demo} 
                         whileHover={{ scale: 1.15, y: -2 }}
-                        className="p-2 bg-gray-50 dark:bg-gray-800/60 border border-gray-200 dark:border-gray-700/60 text-gray-500 dark:text-gray-400 hover:text-accent-500 dark:hover:text-accent-400 rounded-xl transition-all shadow-sm"
+                        className="p-2 bg-kh-bg-primary/60 border border-kh-border text-kh-muted hover:text-accent-500 dark:hover:text-accent-400 rounded-xl transition-all shadow-sm"
                       >
                         <ExternalLink size={18} />
                       </motion.a>
@@ -381,19 +388,19 @@ const Projects = () => {
                   </div>
 
                   {/* Project Info */}
-                  <h3 className="text-2xl font-extrabold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-200">
+                  <h3 className="text-2xl font-extrabold text-kh-text group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-200">
                     {project.title}
                   </h3>
-                  <h4 className="text-xs font-semibold text-gray-400 dark:text-gray-500 mb-4 tracking-wide">
+                  <h4 className="text-xs font-semibold text-kh-muted mb-4 tracking-wide">
                     {project.subtitle}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-medium mb-8">
+                  <p className="text-sm text-kh-muted leading-relaxed font-medium mb-8">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Tech stack badges */}
-                <div className="flex flex-wrap gap-2.5 mt-auto pt-4 border-t border-gray-150 dark:border-gray-800/80">
+                <div className="flex flex-wrap gap-2.5 mt-auto pt-4 border-t border-kh-border">
                   {project.tech.map((t, index) => (
                     <span 
                       key={index} 
@@ -422,7 +429,7 @@ const Projects = () => {
             rel="noreferrer"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-accent-500 hover:text-accent-500 text-gray-700 dark:text-gray-300 font-bold rounded-2xl transition-all shadow-md dark:shadow-none"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-kh-bg-card border border-kh-border hover:border-accent-500 hover:text-accent-500 text-kh-text font-bold rounded-2xl transition-all shadow-md dark:shadow-none"
           >
             <Sparkles size={18} className="text-accent-500 animate-pulse" />
             Explorar más proyectos en GitHub
