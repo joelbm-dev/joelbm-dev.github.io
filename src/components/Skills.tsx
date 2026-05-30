@@ -133,7 +133,7 @@ const iconVariants: any = {
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 relative bg-kh-bg-secondary transition-colors duration-300">
+    <section id="skills" className="py-24 relative bg-kh-bg-primary transition-colors duration-300">
 
       {/* Background blurs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -151,8 +151,8 @@ const Skills = () => {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-kh-text flex items-center justify-center gap-4">
-            Habilidades Técnicas
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-kh-text text-center font-cinzel tracking-wide leading-tight">
+            👑 Habilidades <span className="shimmer-text">Técnicas</span>
           </h2>
           <p className="text-lg text-kh-muted mt-4 max-w-2xl mx-auto">
             Tecnologías con las que trabajo a diario — del frontend al servidor, de la automatización a la infraestructura.

@@ -315,7 +315,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden dot-grid"
+      className="relative min-h-screen flex items-center justify-center pt-20 pb-12 overflow-hidden"
     >
       {/* ── Aurora blobs ── */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">

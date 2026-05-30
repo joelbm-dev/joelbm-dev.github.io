@@ -28,12 +28,12 @@
 
 @layer base {
   :root {
-    --kh-bg-primary: #fcf9f2;      /* Warm menu parchment cream */
-    --kh-bg-secondary: #f5f0e1;    /* Slightly warmer parchment cream */
-    --kh-bg-card: rgba(255, 254, 250, 0.85); /* Translucent warm milk white */
-    --kh-border: rgba(212, 175, 55, 0.25);    /* Warm soft gold/bronze border */
-    --kh-text: #2d220f;            /* Deep dark sepia-brown */
-    --kh-muted: #7d6a52;           /* Muted warm sepia/gray-brown */
+    --kh-bg-primary: #faf8f5;      /* Warm menu parchment cream, refined */
+    --kh-bg-secondary: #faf8f5;    /* Match background to avoid patches */
+    --kh-bg-card: rgba(255, 255, 255, 0.75); /* Translucent crisp warm white */
+    --kh-border: rgba(212, 175, 55, 0.22);    /* Warm soft gold/bronze border */
+    --kh-text: #201a0f;            /* Deep dark sepia-brown */
+    --kh-muted: #6b5947;           /* Muted warm sepia/gray-brown */
     
     --bg-color: var(--kh-bg-primary);
     --text-color: var(--kh-text);
@@ -41,12 +41,12 @@
   }
   
   .dark {
-    --kh-bg-primary: #040714;      /* Deep Kingdom Ocean Navy Blue */
-    --kh-bg-secondary: #0b0922;    /* Deep violet-indigo */
-    --kh-bg-card: rgba(13, 10, 35, 0.75);    /* Translucent deep violet-navy with blur */
-    --kh-border: rgba(212, 175, 55, 0.15);   /* Subtle gold border */
-    --kh-text: #f1ebd9;            /* Soft celestial parchment white */
-    --kh-muted: #a5a1c0;           /* Muted lavender/gray */
+    --kh-bg-primary: #030510;      /* Deep celestial space navy */
+    --kh-bg-secondary: #030510;    /* Match background to avoid patches */
+    --kh-bg-card: rgba(11, 13, 28, 0.65);    /* Translucent deep navy-indigo with blur */
+    --kh-border: rgba(212, 175, 55, 0.14);   /* Subtle gold border */
+    --kh-text: #f0ebdd;            /* Soft celestial parchment white */
+    --kh-muted: #9da0b5;           /* Muted silver-lavender */
     
     --bg-color: var(--kh-bg-primary);
     --text-color: var(--kh-text);

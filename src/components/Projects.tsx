@@ -300,7 +300,7 @@ const AdminPanelCarousel = () => {
 ───────────────────────────────────────────────────────────────────────────── */
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 relative bg-kh-bg-secondary transition-colors duration-300 overflow-hidden">
+    <section id="projects" className="py-24 relative bg-kh-bg-primary transition-colors duration-300 overflow-hidden">
       
       {/* Background Ornaments */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-40 dark:opacity-60">
@@ -318,8 +318,8 @@ const Projects = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-kh-text mb-6 flex items-center justify-center gap-4">
-            Proyectos Principales
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-kh-text mb-6 text-center font-cinzel tracking-wide leading-tight">
+            👑 Proyectos <span className="shimmer-text">Principales</span>
           </h2>
           <p className="text-lg text-kh-muted max-w-3xl mt-2 font-medium mx-auto">
             Una exhibición de los proyectos insignia construidos para dar soluciones eficaces al cuidado medioambiental y la administración a gran escala.

@@ -20,8 +20,8 @@ const About = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-kh-text mb-6 flex items-center justify-center gap-4">
-            Sobre mí
+          <h2 className="text-xl sm:text-3xl md:text-5xl font-black text-kh-text mb-6 text-center font-cinzel tracking-wide leading-tight">
+            👑 Sobre <span className="shimmer-text">mí</span>
           </h2>
         </motion.div>
 

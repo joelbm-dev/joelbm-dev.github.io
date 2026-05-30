@@ -23,7 +23,7 @@ const educationList = [
 
 const Education = () => {
   return (
-    <section id="education" className="py-24 relative bg-kh-bg-secondary transition-colors duration-300 overflow-hidden">
+    <section id="education" className="py-24 relative bg-kh-bg-primary transition-colors duration-300 overflow-hidden">
       
       {/* Background Ambient Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
@@ -40,8 +40,8 @@ const Education = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-kh-text mb-6 flex items-center justify-center gap-4">
-            Formación Académica
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-kh-text mb-6 text-center font-cinzel tracking-wide leading-tight">
+            👑 Formación <span className="shimmer-text">Académica</span>
           </h2>
           <p className="text-lg text-kh-muted max-w-3xl mt-2 font-medium mx-auto">
             Títulos académicos oficiales que respaldan mi conocimiento especializado en sistemas y desarrollo de software.

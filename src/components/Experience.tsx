@@ -82,8 +82,8 @@ const Experience = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-kh-text flex items-center justify-center gap-4">
-            Experiencia Profesional
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-kh-text text-center font-cinzel tracking-wide leading-tight">
+            👑 Experiencia <span className="shimmer-text">Profesional</span>
           </h2>
           <p className="text-lg text-kh-muted max-w-3xl mt-2 font-medium mx-auto">
             Mis prácticas y colaboraciones reales en empresas y administración pública, consolidando conocimiento técnico directo sobre el terreno.

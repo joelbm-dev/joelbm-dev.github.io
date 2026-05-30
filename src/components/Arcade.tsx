@@ -1006,7 +1006,7 @@ export default function Arcade() {
   };
 
   return (
-    <section id="arcade" className="py-24 relative transition-colors duration-300 overflow-hidden font-sans bg-gradient-to-b from-[#faf8f0] via-[#f5eedc] to-[#ebe1cd] dark:from-[#08041a] dark:via-[#0d0820] dark:to-[#120628] text-kh-text">
+    <section id="arcade" className="py-24 relative transition-colors duration-300 overflow-hidden font-sans bg-kh-bg-primary text-kh-text">
       {/* Kingdom Hearts ambient glows */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-500/5 dark:from-purple-900/20 via-transparent to-transparent pointer-events-none z-0" />
       <div className="absolute top-[10%] left-[5%] w-[420px] h-[420px] rounded-full blur-[120px] pointer-events-none bg-accent-500/5 dark:bg-purple-900/10" />
@@ -1027,7 +1027,7 @@ export default function Arcade() {
             <Gamepad2 size={14} className="animate-bounce" />
             ✦ Coliseo de Habilidades ✦
           </div>
-          <h2 className="text-4xl md:text-6xl font-black flex items-center justify-center gap-4 tracking-tight" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ffd700 0%, #cc88ff 50%, #ff44aa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 15px rgba(200,100,255,0.25))'}}>
+          <h2 className="text-4xl md:text-6xl font-black flex items-center justify-center gap-4 tracking-tight font-cinzel-dec bg-clip-text text-transparent bg-gradient-to-r from-accent-500 via-accent-400 to-accent-600 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
             ⚔ CODE KEYBLADE ⚔
           </h2>
           <p className="max-w-2xl mt-4 text-base md:text-lg font-medium leading-relaxed text-kh-muted">
@@ -1047,16 +1047,16 @@ export default function Arcade() {
             className="flex-1 flex flex-col items-center"
           >
             {/* Screen bezel - Kingdom Hearts Gummi Ship Console */}
-            <div className="relative p-3 md:p-5 rounded-[40px] w-full max-w-[500px] bg-gradient-to-b from-[#e3dac3] to-[#c7ba9d] dark:from-[#1a0a38] dark:to-[#0d0420] border-3 border-[#c3ac75]/60 dark:border-[#9966cc]/40 shadow-[0_0_40px_rgba(212,175,55,0.15),_inset_0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(140,50,255,0.2),_inset_0_0_30px_rgba(0,0,0,0.5)]">
+            <div className="relative p-2 sm:p-3 md:p-5 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] w-full max-w-[500px] bg-gradient-to-b from-[#e3dac3] to-[#c7ba9d] dark:from-[#1a0a38] dark:to-[#0d0420] border-3 border-[#c3ac75]/60 dark:border-[#9966cc]/40 shadow-[0_0_40px_rgba(212,175,55,0.15),_inset_0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[0_0_60px_rgba(140,50,255,0.2),_inset_0_0_30px_rgba(0,0,0,0.5)]">
               
               {/* Flashing power light */}
-              <div className="absolute top-2 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-black/40 dark:bg-black/60 px-3 py-0.5 rounded-full border border-kh-border/40">
-                <div className={`w-2 h-2 rounded-full ${gameState === 'playing' ? 'animate-pulse' : ''}`} style={{background: gameState === 'playing' ? '#cc44ff' : '#ff4466', boxShadow: gameState === 'playing' ? '0 0 8px #cc44ff' : '0 0 8px #ff4466'}} />
-                <span className="text-[9px] font-mono font-black tracking-wider text-accent-500 dark:text-[#cc88ff]">✦ GUMMI CONSOLE — KINGDOM OS ✦</span>
+              <div className="absolute top-1.5 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-1.5 bg-black/40 dark:bg-black/60 px-2 sm:px-3 py-0.5 rounded-full border border-kh-border/40 max-w-[90%]">
+                <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shrink-0 ${gameState === 'playing' ? 'animate-pulse' : ''}`} style={{background: gameState === 'playing' ? '#cc44ff' : '#ff4466', boxShadow: gameState === 'playing' ? '0 0 8px #cc44ff' : '0 0 8px #ff4466'}} />
+                <span className="text-[7px] sm:text-[9px] font-mono font-black tracking-wider text-accent-500 dark:text-[#cc88ff] truncate">✦ GUMMI CONSOLE — KINGDOM OS ✦</span>
               </div>
 
               {/* CRT Scanline Filters Container */}
-              <div className="relative overflow-hidden rounded-[26px] bg-[#0a0e1c] border-2 border-gray-900 shadow-inner group">
+              <div className="relative overflow-hidden rounded-[16px] sm:rounded-[20px] md:rounded-[26px] bg-[#0a0e1c] border-2 border-gray-900 shadow-inner group">
                 
                 {/* 1. CRT flickering grid overlay */}
                 <div className="absolute inset-0 pointer-events-none z-30 opacity-[0.07] bg-[linear-gradient(rgba(18,16,16,0)_50%,_rgba(0,0,0,0.25)_50%),_linear-gradient(90deg,_rgba(255,0,0,0.06),_rgba(0,255,0,0.02),_rgba(0,0,255,0.06))] bg-[length:100%_4px,_3px_100%] select-none" />
@@ -1082,28 +1082,28 @@ export default function Arcade() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-[#0a0e1c]/90 backdrop-blur-sm z-20 flex flex-col justify-center items-center p-6 text-center"
+                      className="absolute inset-0 bg-[#0a0e1c]/90 backdrop-blur-sm z-20 flex flex-col justify-center items-center p-4 sm:p-6 text-center overflow-y-auto"
                     >
                       {/* KH Crown icon */}
-                      <div className="text-6xl mb-4 animate-bounce" style={{filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7))'}}>👑</div>
-                      <h3 className="text-3xl font-black tracking-widest mb-1" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ffd700, #cc88ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>CODE KEYBLADE</h3>
-                      <p className="font-bold text-xs tracking-widest uppercase mb-8" style={{color: '#cc88ff', fontFamily: 'monospace'}}>
+                      <div className="text-4xl sm:text-6xl mb-2 sm:mb-4 animate-bounce" style={{filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7))'}}>👑</div>
+                      <h3 className="text-xl sm:text-3xl font-black tracking-widest mb-1" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ffd700, #cc88ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>CODE KEYBLADE</h3>
+                      <p className="font-bold text-[10px] sm:text-xs tracking-widest uppercase mb-4 sm:mb-6" style={{color: '#cc88ff', fontFamily: 'monospace'}}>
                         ✦ Elige tu Keyblade. Derrota las Sombras. ✦
                       </p>
 
-                      <div className="space-y-4 max-w-sm mb-10 text-left p-5 rounded-2xl" style={{background: 'rgba(30,10,60,0.8)', border: '1px solid rgba(180,100,255,0.25)'}}>
-                        <div className="flex items-center gap-3 text-xs" style={{color: '#c0a0e0'}}>
-                          <kbd className="px-2 py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>←</kbd>
-                          <kbd className="px-2 py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>→</kbd>
+                      <div className="space-y-2.5 sm:space-y-4 w-full max-w-sm mb-4 sm:mb-8 text-left p-3 sm:p-5 rounded-2xl" style={{background: 'rgba(30,10,60,0.8)', border: '1px solid rgba(180,100,255,0.25)'}}>
+                        <div className="flex items-center gap-2 sm:gap-3 text-xs" style={{color: '#c0a0e0'}}>
+                          <kbd className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>←</kbd>
+                          <kbd className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>→</kbd>
                           <span className="font-semibold">Mover Keyblade</span>
                         </div>
-                        <div className="flex items-center gap-3 text-xs" style={{color: '#c0a0e0'}}>
-                          <kbd className="px-5 py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>Espacio</kbd>
+                        <div className="flex items-center gap-2 sm:gap-3 text-xs" style={{color: '#c0a0e0'}}>
+                          <kbd className="px-3 sm:px-5 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>Espacio</kbd>
                           <span className="font-semibold">Lanzar Hechizo de Luz</span>
                         </div>
-                        <div className="flex items-start gap-3 text-xs border-t pt-3" style={{color: '#9977bb', borderColor: 'rgba(180,100,255,0.15)'}}>
-                          <span className="px-1.5 py-0.5 rounded font-mono font-bold text-[9px] uppercase mt-0.5" style={{background: 'rgba(140,50,255,0.15)', color: '#cc88ff'}}>MÓVIL</span>
-                          <span className="font-semibold leading-relaxed">Arrastra el dedo para guiar tu Keyblade; los hechizos se lanzarán automáticamente.</span>
+                        <div className="flex items-start gap-2 sm:gap-3 text-xs border-t pt-2 sm:pt-3" style={{color: '#9977bb', borderColor: 'rgba(180,100,255,0.15)'}}>
+                          <span className="px-1.5 py-0.5 rounded font-mono font-bold text-[9px] uppercase mt-0.5 shrink-0" style={{background: 'rgba(140,50,255,0.15)', color: '#cc88ff'}}>MÓVIL</span>
+                          <span className="font-semibold leading-relaxed text-[11px] sm:text-xs">Arrastra el dedo para guiar tu Keyblade; los hechizos se lanzarán automáticamente.</span>
                         </div>
                       </div>
 
@@ -1111,7 +1111,7 @@ export default function Arcade() {
                         whileHover={{ scale: 1.06, boxShadow: '0 0 30px rgba(200,100,255,0.6)' }}
                         whileTap={{ scale: 0.94 }}
                         onClick={startGame}
-                        className="px-10 py-4 rounded-2xl font-black tracking-widest shadow-lg transition-all text-sm animate-pulse"
+                        className="px-5 sm:px-10 py-3 sm:py-4 rounded-2xl font-black tracking-widest shadow-lg transition-all text-xs sm:text-sm animate-pulse"
                         style={{background: 'linear-gradient(135deg, #ffd700, #cc44ff)', color: '#08041a', border: '2px solid rgba(255,215,0,0.5)', fontFamily: "'Cinzel', serif"}}
                       >
                         ⚔ EMPUÑA TU KEYBLADE ⚔
@@ -1129,35 +1129,35 @@ export default function Arcade() {
                       className="absolute inset-0 backdrop-blur-sm z-20 flex flex-col justify-center items-center p-6 text-center"
                       style={{background: 'rgba(20,5,40,0.93)'}}
                     >
-                      <div className="text-5xl mb-3" style={{filter: 'drop-shadow(0 0 15px rgba(255,50,100,0.8))'}}>💔</div>
-                      <h3 className="text-4xl md:text-5xl font-black tracking-widest mb-2 animate-pulse" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ff4466, #cc44ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 15px rgba(255,50,100,0.5))'}}>
+                      <div className="text-4xl sm:text-5xl mb-2 sm:mb-3" style={{filter: 'drop-shadow(0 0 15px rgba(255,50,100,0.8))'}}>💔</div>
+                      <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-widest mb-1 sm:mb-2 animate-pulse" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ff4466, #cc44ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', filter: 'drop-shadow(0 0 15px rgba(255,50,100,0.5))'}}>
                         GAME OVER
                       </h3>
-                      <p className="font-bold text-xs tracking-widest uppercase mb-8" style={{color: '#cc88ff', fontFamily: 'monospace'}}>
+                      <p className="font-bold text-[10px] sm:text-xs tracking-widest uppercase mb-4 sm:mb-6" style={{color: '#cc88ff', fontFamily: 'monospace'}}>
                         — El corazón ha caído en la oscuridad —
                       </p>
 
-                      <div className="grid grid-cols-2 gap-4 max-w-sm w-full mb-10">
-                        <div className="p-4 rounded-xl" style={{background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(180,100,255,0.2)'}}>
+                      <div className="grid grid-cols-2 gap-2 sm:gap-4 max-w-sm w-full mb-4 sm:mb-8">
+                        <div className="p-2.5 sm:p-4 rounded-xl" style={{background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(180,100,255,0.2)'}}>
                           <span className="text-[10px] font-mono font-bold block uppercase" style={{color: '#9977bb'}}>Munny</span>
-                          <span className="text-2xl font-black font-mono" style={{color: '#ffd700'}}>{score}</span>
+                          <span className="text-xl sm:text-2xl font-black font-mono" style={{color: '#ffd700'}}>{score}</span>
                         </div>
-                        <div className="p-4 rounded-xl" style={{background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(180,100,255,0.2)'}}>
+                        <div className="p-2.5 sm:p-4 rounded-xl" style={{background: 'rgba(0,0,0,0.5)', border: '1px solid rgba(180,100,255,0.2)'}}>
                           <span className="text-[10px] font-mono font-bold block uppercase" style={{color: '#9977bb'}}>Récord</span>
-                          <span className="text-2xl font-mono font-black flex items-center justify-center gap-1" style={{color: '#ffd700'}}>
-                            <Trophy size={16} />
+                          <span className="text-xl sm:text-2xl font-mono font-black flex items-center justify-center gap-1" style={{color: '#ffd700'}}>
+                            <Trophy size={14} />
                             {highScore}
                           </span>
                         </div>
                       </div>
 
                       {score >= 500 ? (
-                        <p className="font-black text-xs font-mono mb-8 px-4 py-2 rounded-xl" style={{color: '#ffd700', border: '1px solid rgba(255,215,0,0.3)', background: 'rgba(255,215,0,0.05)'}}>
-                          ✨ ¡MUNDO DESBLOQUEADO! (Ver a la derecha)
+                        <p className="font-black text-[10px] sm:text-xs font-mono mb-4 sm:mb-6 px-3 sm:px-4 py-2 rounded-xl text-center" style={{color: '#ffd700', border: '1px solid rgba(255,215,0,0.3)', background: 'rgba(255,215,0,0.05)'}}>
+                          ✨ ¡MUNDO DESBLOQUEADO!
                         </p>
                       ) : (
-                        <p className="font-bold text-[11px] font-mono mb-8 max-w-xs leading-relaxed" style={{color: '#cc88ff'}}>
-                          ¡Consigue 500 Munny para desbloquear los secretos del Maestro de la Keyblade!
+                        <p className="font-bold text-[10px] sm:text-[11px] font-mono mb-4 sm:mb-6 max-w-xs leading-relaxed text-center" style={{color: '#cc88ff'}}>
+                          ¡Consigue 500 Munny para desbloquear los secretos del Maestro!
                         </p>
                       )}
 
@@ -1165,9 +1165,9 @@ export default function Arcade() {
                         whileHover={{ scale: 1.05, boxShadow: '0 0 25px rgba(180,100,255,0.5)' }}
                         whileTap={{ scale: 0.95 }}
                         onClick={startGame}
-                        className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-white text-gray-900 font-black tracking-widest shadow-lg hover:bg-gray-100 transition-all font-mono text-sm border-2 border-white"
+                        className="inline-flex items-center gap-2 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-2xl bg-white text-gray-900 font-black tracking-widest shadow-lg hover:bg-gray-100 transition-all font-mono text-xs sm:text-sm border-2 border-white"
                       >
-                        <RotateCcw size={16} />
+                        <RotateCcw size={14} />
                         RE-COMPILAR JUEGO
                       </motion.button>
                     </motion.div>
@@ -1234,16 +1234,16 @@ export default function Arcade() {
             </div>
 
             {/* Game controls / Mute cabinet buttons */}
-            <div className="flex justify-between items-center w-full max-w-[500px] mt-4 px-4">
-              <div className="text-[10px] font-mono font-semibold text-kh-muted dark:text-[#a085e6]">
+            <div className="flex justify-between items-center w-full max-w-[500px] mt-3 sm:mt-4 px-2 sm:px-4">
+              <div className="text-[9px] sm:text-[10px] font-mono font-semibold text-kh-muted dark:text-[#a085e6] truncate mr-2">
                 ✦ JOEL PORTFOLIO 2026 — KINGDOM ARCADE ✦
               </div>
               <button 
                 onClick={toggleMute}
-                className="p-2.5 rounded-xl transition-colors shadow bg-white/80 dark:bg-[#281446]/80 border border-kh-border text-accent-600 dark:text-[#cc88ff] hover:bg-accent-500/10 cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-xl transition-colors shadow bg-white/80 dark:bg-[#281446]/80 border border-kh-border text-accent-600 dark:text-[#cc88ff] hover:bg-accent-500/10 cursor-pointer shrink-0"
                 aria-label="Toggle game audio"
               >
-                {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+                {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
               </button>
             </div>
           </motion.div>
@@ -1254,7 +1254,7 @@ export default function Arcade() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="w-full lg:w-[350px] flex flex-col gap-6"
+            className="w-full lg:w-[350px] flex flex-col gap-4 sm:gap-6"
           >
             {/* 1. Scoreboard Panel Card — Kingdom Tome */}
             <div className="p-6 rounded-3xl backdrop-blur-md relative overflow-hidden group border border-kh-border bg-kh-bg-card/90 dark:bg-kh-bg-card/75 shadow-sm dark:shadow-none">
