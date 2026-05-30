@@ -1028,10 +1028,10 @@ export default function Arcade() {
             ✦ Coliseo de Habilidades ✦
           </div>
           <h2 className="text-4xl md:text-6xl font-black flex items-center justify-center gap-4 tracking-tight font-cinzel-dec bg-clip-text text-transparent bg-gradient-to-r from-accent-500 via-accent-400 to-accent-600 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
-            ⚔ CODE KEYBLADE ⚔
+            CODE KEYBLADE
           </h2>
           <p className="max-w-2xl mt-4 text-base md:text-lg font-medium leading-relaxed text-kh-muted">
-            Los Sincorazón han invadido el reino del código. Empuña tu Keyblade digital y elimina las sombras. ¡Supera los <strong className="text-accent-500 dark:text-accent-400">500 Munny</strong> para desbloquear los secretos del Maestro!
+            Los Sincorazón han invadido el reino del código. Pilota tu Nave Gummi digital y elimina las sombras. ¡Supera los <strong className="text-accent-500 dark:text-accent-400">500 Munny</strong> para desbloquear los secretos del Maestro!
           </p>
         </motion.div>
 
@@ -1088,14 +1088,14 @@ export default function Arcade() {
                       <div className="text-4xl sm:text-6xl mb-2 sm:mb-4 animate-bounce" style={{filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.7))'}}>👑</div>
                       <h3 className="text-xl sm:text-3xl font-black tracking-widest mb-1" style={{fontFamily: "'Cinzel Decorative', serif", background: 'linear-gradient(135deg, #ffd700, #cc88ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'}}>CODE KEYBLADE</h3>
                       <p className="font-bold text-[10px] sm:text-xs tracking-widest uppercase mb-4 sm:mb-6" style={{color: '#cc88ff', fontFamily: 'monospace'}}>
-                        ✦ Elige tu Keyblade. Derrota las Sombras. ✦
+                        ✦ Pilota la Nave Gummi. Derrota las Sombras. ✦
                       </p>
 
                       <div className="space-y-2.5 sm:space-y-4 w-full max-w-sm mb-4 sm:mb-8 text-left p-3 sm:p-5 rounded-2xl" style={{background: 'rgba(30,10,60,0.8)', border: '1px solid rgba(180,100,255,0.25)'}}>
                         <div className="flex items-center gap-2 sm:gap-3 text-xs" style={{color: '#c0a0e0'}}>
                           <kbd className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>←</kbd>
                           <kbd className="px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>→</kbd>
-                          <span className="font-semibold">Mover Keyblade</span>
+                          <span className="font-semibold">Mover Nave</span>
                         </div>
                         <div className="flex items-center gap-2 sm:gap-3 text-xs" style={{color: '#c0a0e0'}}>
                           <kbd className="px-3 sm:px-5 py-0.5 sm:py-1 rounded text-[10px] font-bold shadow font-mono" style={{background: '#2a1050', border: '1px solid rgba(180,100,255,0.4)', color: '#ffd700'}}>Espacio</kbd>
@@ -1103,7 +1103,7 @@ export default function Arcade() {
                         </div>
                         <div className="flex items-start gap-2 sm:gap-3 text-xs border-t pt-2 sm:pt-3" style={{color: '#9977bb', borderColor: 'rgba(180,100,255,0.15)'}}>
                           <span className="px-1.5 py-0.5 rounded font-mono font-bold text-[9px] uppercase mt-0.5 shrink-0" style={{background: 'rgba(140,50,255,0.15)', color: '#cc88ff'}}>MÓVIL</span>
-                          <span className="font-semibold leading-relaxed text-[11px] sm:text-xs">Arrastra el dedo para guiar tu Keyblade; los hechizos se lanzarán automáticamente.</span>
+                          <span className="font-semibold leading-relaxed text-[11px] sm:text-xs">Arrastra el dedo para guiar tu Nave; los hechizos se lanzarán automáticamente.</span>
                         </div>
                       </div>
 
@@ -1114,7 +1114,7 @@ export default function Arcade() {
                         className="px-5 sm:px-10 py-3 sm:py-4 rounded-2xl font-black tracking-widest shadow-lg transition-all text-xs sm:text-sm animate-pulse"
                         style={{background: 'linear-gradient(135deg, #ffd700, #cc44ff)', color: '#08041a', border: '2px solid rgba(255,215,0,0.5)', fontFamily: "'Cinzel', serif"}}
                       >
-                        ⚔ EMPUÑA TU KEYBLADE ⚔
+                        ¡JUGAR!
                       </motion.button>
                     </motion.div>
                   )}
@@ -1319,7 +1319,7 @@ export default function Arcade() {
                       </div>
 
                       <p className="text-xs font-semibold leading-relaxed text-kh-text">
-                        Como Maestro de la Keyblade, tienes acceso directo a los archivos del Castillo: mis credenciales y CV oficial.
+                        Como Maestro de la Keyblade, tienes acceso directo a los archivos secretos.
                       </p>
 
                       <div className="space-y-3 pt-2">
@@ -1357,7 +1357,7 @@ export default function Arcade() {
                     >
                       <div className="p-4 rounded-2xl text-xs font-mono space-y-2 leading-relaxed bg-black/5 dark:bg-black/40 border border-kh-border text-kh-text">
                         <span className="font-bold block text-red-500 dark:text-red-400">🔒 PUERTA: SELLADA POR LA OSCURIDAD</span>
-                        <span>Requiere 500 Munny para invocar la llave maestra del Castillo Hueco.</span>
+                        <span>Requiere 500 Munny para desbloquear la cerradura.</span>
                         <div className="w-full h-2.5 rounded-full overflow-hidden mt-3 bg-black/10 dark:bg-white/5 border border-kh-border">
                           <div 
                             className="h-full rounded-full transition-all duration-500"
@@ -1369,18 +1369,9 @@ export default function Arcade() {
                           <span>META: 500 ✦</span>
                         </div>
                       </div>
-
-                      <p className="text-xs font-semibold leading-relaxed text-kh-muted">
-                        Derrota a los Sincorazón y reúne el Munny suficiente para abrir la Puerta del Castillo Hueco.
-                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
-
-              {/* Console log foot detail */}
-              <div className="text-[9px] font-mono text-left border-t pt-3 mt-4 text-kh-muted border-kh-border/40">
-                ✦ KH.OS v2.358 // KEYBLADE_SYNC: OK // WORLD_ID: HOLLOW_BASTION
               </div>
             </div>
 
